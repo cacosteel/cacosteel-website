@@ -1,43 +1,102 @@
-# Astro Starter Kit: Minimal
+# CACO Steel Website
 
-```sh
-npm create astro@latest -- --template minimal
+Official corporate website of **CACO Steel**, an international steel export company based in Antalya, Türkiye.
+
+The website showcases CACO Steel's products, services, international markets, and company information with a modern, responsive design built using Astro.
+
+---
+
+## 🌍 Website Features
+
+- Responsive corporate design
+- Modern homepage
+- About page
+- Products page
+- Services page
+- Contact page
+- Terms & Policies page
+- Optimized for desktop and mobile devices
+- Fast performance with Astro
+
+---
+
+## 🛠️ Built With
+
+- Astro
+- HTML5
+- CSS3
+- JavaScript
+
+---
+
+## 📁 Project Structure
+
+```
+src/
+├── components/
+├── layouts/
+├── pages/
+├── styles/
+
+public/
 ```
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+---
 
-## 🚀 Project Structure
+## 🚀 Development
 
-Inside of your Astro project, you'll see the following folders and files:
+Install dependencies:
 
-```text
-/
-├── public/
-├── src/
-│   └── pages/
-│       └── index.astro
-└── package.json
+```bash
+npm install
 ```
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+Run the development server:
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
+```bash
+npm run dev
+```
 
-Any static assets, like images, can be placed in the `public/` directory.
+Open:
 
-## 🧞 Commands
+```
+http://localhost:4321
+```
 
-All commands are run from the root of the project, from a terminal:
+---
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
+## 📦 Production Build
 
-## 👀 Want to learn more?
+Create a production build:
 
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+```bash
+npm run build
+```
+
+Preview the production build:
+
+```bash
+npm run preview
+```
+
+---
+
+## 🌐 Company
+
+**CACO Steel**
+
+International Steel Solutions
+
+Antalya, Türkiye
+
+Website:
+https://www.cacosteel.com
+
+Email:
+info@cacosteel.com
+
+---
+
+## 📄 License
+
+© 2026 CACO Steel. All rights reserved.
