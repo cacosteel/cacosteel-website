@@ -5,67 +5,31 @@ import Footer from "../components/Footer.astro";
 
 export interface Props {
   title: string;
-  description?: string;
 }
 
-const {
-  title,
-  description = "CACO Steel supplies high-quality Turkish steel products worldwide, providing reliable sourcing, export logistics, and international steel solutions."
-} = Astro.props;
-
-const siteUrl = "https://www.cacosteel.com";
-const pageTitle = `${title} | CACO Steel`;
+const { title } = Astro.props;
 ---
 
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
   <meta charset="UTF-8" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Montserrat:wght@500;600;700;800&display=swap" rel="stylesheet">
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{title}</title>
 
-  <title>{pageTitle}</title>
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-P81MTRH92F"></script>
+  <script is:inline>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
 
-  <meta name="description" content={description} />
-  <meta name="keywords" content="steel exporter, Turkish steel, steel supplier, steel export, flat steel, long steel, steel tubes, international steel solutions, CACO Steel" />
-  <meta name="author" content="CACO Steel" />
-
-  <meta name="robots" content="index, follow" />
-
-  <link rel="canonical" href={siteUrl + Astro.url.pathname} />
-
-  <!-- Open Graph -->
-
-  <meta property="og:type" content="website" />
-  <meta property="og:title" content={pageTitle} />
-  <meta property="og:description" content={description} />
-  <meta property="og:url" content={siteUrl + Astro.url.pathname} />
-  <meta property="og:site_name" content="CACO Steel" />
-  <meta property="og:image" content={siteUrl + "/images/logo.png"} />
-
-  <!-- Twitter -->
-
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content={pageTitle} />
-  <meta name="twitter:description" content={description} />
-  <meta name="twitter:image" content={siteUrl + "/images/logo.png"} />
-
-  <!-- Favicon -->
-
-  <link rel="icon" href="/favicon.ico" sizes="any" />
-  <link rel="apple-touch-icon" href="/images/logo.png" />
-
-  <!-- Fonts -->
-
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-
-  <link
-    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Montserrat:wght@500;600;700;800&display=swap"
-    rel="stylesheet"
-  />
-
+    gtag('config', 'G-P81MTRH92F');
+  </script>
 </head>
 
 <body>
@@ -79,5 +43,4 @@ const pageTitle = `${title} | CACO Steel`;
   <Footer />
 
 </body>
-
 </html>
