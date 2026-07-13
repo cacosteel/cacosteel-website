@@ -198,53 +198,58 @@ button:hover,
     margin-top:4px;
 
 }
-
 nav{
-
     display:flex;
     align-items:center;
-    gap:32px;
-
+    gap:30px;
 }
 
 nav a{
-
-    color:var(--dark-gray);
-
+    position:relative;
     text-decoration:none;
-
+    color:var(--dark-gray);
     font-weight:500;
-
-    transition:var(--transition);
-
+    font-size:15px;
+    transition:.3s ease;
 }
 
 nav a:hover{
-
     color:var(--primary);
+}
 
+nav a::after{
+    content:"";
+    position:absolute;
+    left:0;
+    bottom:-6px;
+    width:0;
+    height:2px;
+    background:var(--primary);
+    transition:.3s;
+}
+
+nav a:hover::after{
+    width:100%;
 }
 
 .quote-button{
-
     background:var(--primary);
-
-    color:white;
-
-    padding:14px 24px;
-
+    color:white !important;
+    padding:14px 26px;
     border-radius:30px;
-
     font-weight:600;
-
+    box-shadow:0 8px 20px rgba(11,58,99,.15);
+    transition:all .3s ease;
 }
 
 .quote-button:hover{
-
     background:var(--primary-hover);
+    transform:translateY(-2px);
+    box-shadow:0 12px 24px rgba(11,58,99,.25);
+}
 
-    color:white;
-
+.quote-button::after{
+    display:none;
 }
 
 /* ===== Why Choose CACO ===== */
@@ -302,14 +307,6 @@ nav a:hover{
         grid-template-columns: 1fr;
     }
 
-}
-
-.header{
-    background:white;
-    border-bottom:1px solid #e5e5e5;
-    position:sticky;
-    top:0;
-    z-index:100;
 }
 
 
@@ -1212,6 +1209,95 @@ nav a:hover{
     .footer-grid{
 
         grid-template-columns:1fr;
+
+    }
+
+}
+
+.login-link{
+    color:var(--text-light);
+    font-size:14px;
+}
+
+.login-link:hover{
+    color:var(--primary);
+}
+
+/* ==========================================
+   Statistics
+========================================== */
+
+.stats{
+
+    background:#ffffff;
+
+    padding:55px 0;
+
+    border-bottom:1px solid #ececec;
+
+}
+
+.stats .container{
+
+    display:grid;
+
+    grid-template-columns:repeat(4,1fr);
+
+    gap:40px;
+
+    text-align:center;
+
+}
+
+.stat-item{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:8px;
+
+}
+
+.stat-number{
+
+    font-family:"Montserrat",sans-serif;
+
+    font-size:48px;
+
+    font-weight:700;
+
+    color:var(--primary);
+
+    line-height:1;
+
+}
+
+.stat-title{
+
+    font-size:15px;
+
+    color:var(--text-light);
+
+    letter-spacing:.5px;
+
+    text-transform:uppercase;
+
+}
+
+@media(max-width:768px){
+
+    .stats .container{
+
+        grid-template-columns:repeat(2,1fr);
+
+        gap:30px;
+
+    }
+
+    .stat-number{
+
+        font-size:36px;
 
     }
 
