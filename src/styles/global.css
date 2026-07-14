@@ -22,9 +22,9 @@
 
     --container:1200px;
 
-    --radius:12px;
+    --radius:16px;
 
-    --shadow:0 12px 30px rgba(0,0,0,.08);
+    --shadow:0 18px 45px rgba(0,0,0,.10);
 
     --transition:.30s ease;
 
@@ -40,7 +40,7 @@ body{
 
     margin:0;
 
-    font-family:Arial, Helvetica, sans-serif;
+   font-family:"Inter",sans-serif;
 
     color:var(--dark-gray);
 
@@ -72,11 +72,13 @@ h1,h2,h3{
 
 h2{
 
-    font-size:42px;
+    font-size:48px;
 
     text-align:center;
 
     margin-bottom:20px;
+
+    line-height:1.2;
 
 }
 
@@ -98,7 +100,7 @@ h1, h2, h3, h4 {
 }
 
 section {
-  padding: 80px 0;
+  padding: 100px 0;
 }
 
 a {
@@ -146,7 +148,7 @@ button:hover,
     justify-content:space-between;
     align-items:center;
 
-    min-height:90px;
+    min-height:96px;
 
 }
 
@@ -162,7 +164,7 @@ button:hover,
 
 .logo img{
 
-    width:58px;
+    width:64px;
 
 }
 
@@ -201,7 +203,7 @@ button:hover,
 nav{
     display:flex;
     align-items:center;
-    gap:30px;
+    gap:36px;
 }
 
 nav a{
@@ -235,7 +237,7 @@ nav a:hover::after{
 .quote-button{
     background:var(--primary);
     color:white !important;
-    padding:14px 26px;
+    padding:15px 30px;
     border-radius:30px;
     font-weight:600;
     box-shadow:0 8px 20px rgba(11,58,99,.15);
@@ -315,10 +317,10 @@ nav a:hover::after{
 ========================= */
 
 .hero {
-    min-height: 90vh;
+    min-height: 100vh;
     background:
         linear-gradient(rgba(11,31,58,.72), rgba(11,31,58,.72)),
-        url("https://images.unsplash.com/photo-1513828583688-c52646db42da?auto=format&fit=crop&w=1800&q=80");
+        url("/images/home/hero.jpg");
     background-size: cover;
     background-position: center;
     display: flex;
@@ -344,14 +346,15 @@ nav a:hover::after{
 
 .hero h1{
     color:#fff;
-    font-size:64px;
+    font-size:68px;
     line-height:1.1;
     margin-bottom:30px;
 }
 
 .hero-text{
     color:#f2f2f2;
-    font-size:22px;
+    font-size:21px;
+    max-width:640px;
     line-height:1.8;
     margin-bottom:45px;
 }
@@ -366,7 +369,7 @@ nav a:hover::after{
     background:var(--primary);;
     color:#fff;
     padding:16px 34px;
-    border-radius:6px;
+    border-radius:8px;
     text-decoration:none;
     font-weight:700;
     transition:.3s;
@@ -380,7 +383,7 @@ nav a:hover::after{
     border:2px solid white;
     color:white;
     padding:16px 34px;
-    border-radius:6px;
+    border-radius:8px;
     text-decoration:none;
     font-weight:700;
     transition:.3s;
