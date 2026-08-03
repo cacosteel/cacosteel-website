@@ -1,0 +1,56 @@
+---
+import MainLayout from "../layouts/MainLayout.astro";
+
+const supabaseUrl = import.meta.env.PUBLIC_SUPABASE_URL ?? "";
+const supabaseAnonKey = import.meta.env.PUBLIC_SUPABASE_ANON_KEY ?? "";
+---
+
+<MainLayout title="Resources | CACO Steel">
+  <section class="page-hero">
+    <div class="container">
+      <h1>Resources</h1>
+      <p>Download our current catalogues, product documents and technical information.</p>
+    </div>
+  </section>
+
+  <section class="resources-page">
+    <div class="container">
+      <div id="resources-list" class="resource-grid" aria-live="polite">
+        <p class="resources-status">Loading resources…</p>
+      </div>
+    </div>
+  </section>
+
+  <script define:vars={{ supabaseUrl, supabaseAnonKey }}>
+    const list = document.querySelector("#resources-list");
+
+    function showMessage(message) {
+      if (list) list.innerHTML = `<p class="resources-status">${message}</p>`;
+    }
+
+    function escapeHtml(value) {
+      return value.replace(/[&<>'"]/g, (character) => ({
+        "&": "&amp;", "<": "&lt;", ">": "&gt;", "'": "&#039;", '"': "&quot;"
+      })[character]);
+    }
+
+    if (!supabaseUrl || !supabaseAnonKey) {
+      showMessage("Resources are being prepared. Please check back shortly.");
+    } else {
+      fetch(`${supabaseUrl}/rest/v1/public_resources?select=title,file_name,file_path&is_published=eq.true&order=created_at.desc`, {
+        headers: { apikey: supabaseAnonKey },
+      })
+        .then((response) => response.ok ? response.json() : Promise.reject())
+        .then((resources) => {
+          if (!resources.length) { showMessage("No resources are available at the moment."); return; }
+          list.innerHTML = resources.map((resource) => {
+            const title = escapeHtml(resource.title);
+            const fileName = escapeHtml(resource.file_name);
+            const fileUrl = `${supabaseUrl}/storage/v1/object/public/public-resources/${resource.file_path.split("/").map(encodeURIComponent).join("/")}`;
+            return `<article class="resource-card"><span class="resource-label">Download</span><h2>${title}</h2><p>${fileName}</p><a class="btn-primary" href="${fileUrl}" target="_blank" rel="noreferrer">Open document</a></article>`;
+          }).join("");
+        })
+        .catch(() => showMessage("Resources could not be loaded. Please try again later."));
+    }
+  </script>
+</MainLayout>

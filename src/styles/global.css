@@ -1305,3 +1305,60 @@ nav a:hover::after{
     }
 
 }
+
+/* ==========================================
+   PUBLIC RESOURCES
+========================================== */
+
+.resources-page{
+    padding:110px 0;
+    background:var(--light-gray);
+}
+
+.resource-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+    gap:28px;
+}
+
+.resource-card{
+    display:flex;
+    flex-direction:column;
+    align-items:flex-start;
+    min-height:230px;
+    padding:34px;
+    background:var(--white);
+    border:1px solid var(--border);
+    border-top:5px solid var(--primary);
+    border-radius:12px;
+    box-shadow:0 10px 25px rgba(0,0,0,.06);
+}
+
+.resource-card h2{
+    margin:16px 0 10px;
+    font-size:24px;
+    text-align:left;
+    color:var(--secondary);
+}
+
+.resource-card p{
+    flex:1;
+    margin-bottom:25px;
+    color:var(--text-light);
+    overflow-wrap:anywhere;
+}
+
+.resource-label{
+    color:var(--primary);
+    font-size:13px;
+    font-weight:700;
+    letter-spacing:1.5px;
+    text-transform:uppercase;
+}
+
+.resources-status{
+    grid-column:1 / -1;
+    padding:35px;
+    text-align:center;
+    color:var(--text-light);
+}
