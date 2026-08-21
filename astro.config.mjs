@@ -3,6 +3,13 @@ import { defineConfig } from "astro/config";
 import sitemap from "@astrojs/sitemap";
 
 export default defineConfig({
-  site: "https://www.cacogroup.com",
-  integrations: [sitemap()]
+  site: "https://www.cacosteel.com",
+  integrations: [
+    sitemap({
+      filter: (page) => !page.endsWith("/legal"),
+    }),
+  ],
+  redirects: {
+    "/legal": "/terms",
+  },
 });
