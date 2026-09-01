@@ -254,6 +254,60 @@ nav a:hover::after{
     display:none;
 }
 
+@media(max-width:900px){
+
+    .header .container{
+        flex-wrap:wrap;
+        gap:14px;
+        min-height:auto;
+        padding:16px 0 12px;
+    }
+
+    nav{
+        width:100%;
+        max-width:100%;
+        justify-content:flex-start;
+        gap:22px;
+        overflow-x:auto;
+        padding:2px 0 8px;
+        scrollbar-width:none;
+    }
+
+    nav::-webkit-scrollbar{
+        display:none;
+    }
+
+    nav a{
+        flex:0 0 auto;
+        white-space:nowrap;
+    }
+
+    .quote-button{
+        padding:10px 18px;
+    }
+
+}
+
+@media(max-width:560px){
+
+    .logo{
+        gap:12px;
+    }
+
+    .logo img{
+        width:48px;
+    }
+
+    .company-name{
+        font-size:24px;
+    }
+
+    .company-tagline{
+        font-size:11px;
+    }
+
+}
+
 /* ===== Why Choose CACO ===== */
 
 .why-choose {
@@ -498,6 +552,25 @@ nav a:hover::after{
 .product-card p{
     color:#666;
     line-height:1.7;
+}
+
+.product-card-link{
+    display:flex;
+    flex-direction:column;
+    color:inherit;
+}
+
+.product-card-link p{
+    flex:1;
+}
+
+.product-card-action{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    margin-top:24px;
+    color:var(--primary);
+    font-weight:700;
 }
 
 /* =========================

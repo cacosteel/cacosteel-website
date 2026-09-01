@@ -1,0 +1,807 @@
+---
+import MainLayout from "../../layouts/MainLayout.astro";
+
+const materialFamilies = [
+    {
+        name: "Hot Rolled",
+        code: "HR",
+        description: "As-rolled, pickled and oiled, and temper-rolled steel in coil, strip, sheet and plate formats."
+    },
+    {
+        name: "Cold Rolled",
+        code: "CR",
+        description: "Smooth-surface steel supplied in coil, slit strip, sheet and processed blank formats."
+    },
+    {
+        name: "Galvanized",
+        code: "GI",
+        description: "Zinc-coated steel for corrosion-resistant industrial, construction and general fabrication uses."
+    },
+    {
+        name: "Pre-painted Galvanized",
+        code: "PPGI",
+        description: "Color-coated galvanized steel in coil, slit strip and sheet formats for formed and finished applications."
+    },
+    {
+        name: "Pre-painted Galvalume",
+        code: "PPGL",
+        description: "Pre-painted aluminium-zinc coated steel for durable roofing, cladding and manufactured products."
+    },
+    {
+        name: "Tinplate",
+        code: "ETP",
+        description: "Tin-coated steel supplied for packaging and other applications that require a clean, protected surface."
+    }
+];
+
+const supplyRanges = [
+    {
+        type: "Mill coil",
+        name: "Hot Rolled Coil",
+        specs: [
+            ["Thickness", "1.20–25.40 mm"],
+            ["Width", "700–2,100 mm"],
+            ["Coil weight", "10–40 t"]
+        ],
+        note: "As-rolled coil for structural, forming and general manufacturing applications."
+    },
+    {
+        type: "Processed coil",
+        name: "Pickled & Oiled Coil",
+        specs: [
+            ["Thickness", "1.20–16.00 mm"],
+            ["Width", "700–2,100 mm"],
+            ["Coil weight", "10–40 t"]
+        ],
+        note: "Scale-removed and oiled hot rolled coil for cleaner downstream processing."
+    },
+    {
+        type: "Processed coil",
+        name: "Temper-Rolled Coil",
+        specs: [
+            ["Thickness", "1.20–6.00 mm"],
+            ["Width", "700–2,100 mm"],
+            ["Coil weight", "10–40 t"]
+        ],
+        note: "Improved flatness and surface consistency for demanding fabrication."
+    },
+    {
+        type: "Longitudinal cut",
+        name: "Slitted Coil & Strip",
+        specs: [
+            ["Thickness", "0.27–12.70 mm"],
+            ["Finished width", "10–2,000 mm"],
+            ["Input coil", "Up to 40 t"]
+        ],
+        note: "Narrow-width strip and processed coil produced to the requested width."
+    },
+    {
+        type: "Transverse cut",
+        name: "Cut-to-Length Sheet & Plate",
+        specs: [
+            ["Thickness", "0.20–60.00 mm"],
+            ["Width", "Up to 2,100 mm"],
+            ["Length", "1,000–20,000 mm"]
+        ],
+        note: "Precision cut-to-length supply with straightening available where required."
+    },
+    {
+        type: "Shaped material",
+        name: "Special Blanks",
+        specs: [
+            ["Thickness", "0.40–3.00 mm"],
+            ["Width", "220–2,000 mm"],
+            ["Geometry", "Made to drawing"]
+        ],
+        note: "Press blanks, trapezoidal blanks and other customer-specific shapes."
+    },
+    {
+        type: "Class NK grades",
+        name: "Shipbuilding Plate",
+        specs: [
+            ["Thickness", "1.20–25.00 mm"],
+            ["Width", "850–1,800 mm"],
+            ["Length", "3,000–14,000 mm"]
+        ],
+        note: "Available grades include KA, KA32, KA36 and KD36."
+    }
+];
+
+const services = [
+    "Precision slitting and recoiling",
+    "Cut-to-length and straightening",
+    "Standard, trapezoidal and special blanks",
+    "Washing, oiling and surface-protection packing",
+    "Corrugated and trapezoidal sheets",
+    "C and Z profiles to specification",
+    "Heavy plate cut to project dimensions",
+    "Tailor-welded blanks by enquiry"
+];
+---
+
+<MainLayout
+    title="Flat Steel Products & Sizes | CACO Steel"
+    description="Explore CACO Steel's flat steel range, including hot rolled, cold rolled, galvanized, PPGI, PPGL and Tinplate products with coil, sheet, strip and plate sizes."
+>
+
+    <section class="flat-hero">
+        <div class="container flat-hero-grid">
+            <div class="flat-hero-content">
+                <a class="back-link" href="/products"><span aria-hidden="true">←</span> All products</a>
+                <span class="section-tag">FLAT STEEL</span>
+                <h1>Flat steel, supplied to your specification.</h1>
+                <p>
+                    CACO Steel coordinates mill supply and precision processing through a qualified
+                    producer and steel service-centre network. We match each enquiry with the right
+                    source for the requested grade, coating, dimensions and delivery terms.
+                </p>
+                <div class="hero-actions">
+                    <a href="/contact" class="btn-primary">Request a Quote</a>
+                    <a href="#supply-ranges" class="text-link">View size ranges <span aria-hidden="true">↓</span></a>
+                </div>
+            </div>
+
+            <div class="flat-hero-media">
+                <img src="/images/home/flatsteelbanner.png" alt="Flat steel coils in a processing facility" />
+                <div class="range-strip" aria-label="Flat steel supply summary">
+                    <div><strong>6</strong><span>material families</span></div>
+                    <div><strong>0.20–60 mm</strong><span>processing envelope</span></div>
+                    <div><strong>Up to 2,100 mm</strong><span>coil and sheet width</span></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="family-section">
+        <div class="container">
+            <div class="section-heading">
+                <div>
+                    <span class="section-tag">PRODUCT FAMILIES</span>
+                    <h2>Steel grades and coatings</h2>
+                </div>
+                <p>
+                    Products can be supplied as mill coils or converted into slit coil, strip,
+                    sheets, plates and blanks according to the order.
+                </p>
+            </div>
+
+            <div class="family-grid">
+                {materialFamilies.map((family) => (
+                    <article class="family-card">
+                        <span class="family-code">{family.code}</span>
+                        <h3>{family.name}</h3>
+                        <p>{family.description}</p>
+                    </article>
+                ))}
+            </div>
+        </div>
+    </section>
+
+    <section id="supply-ranges" class="range-section">
+        <div class="container">
+            <div class="section-heading range-heading">
+                <div>
+                    <span class="section-tag">SUPPLY RANGE</span>
+                    <h2>Products and available sizes</h2>
+                </div>
+                <p>
+                    A combined view of the mill and processing capabilities available to CACO Steel customers.
+                </p>
+            </div>
+
+            <div class="range-grid">
+                {supplyRanges.map((product) => (
+                    <article class="range-card">
+                        <span class="range-type">{product.type}</span>
+                        <h3>{product.name}</h3>
+                        <dl>
+                            {product.specs.map(([label, value]) => (
+                                <div>
+                                    <dt>{label}</dt>
+                                    <dd>{value}</dd>
+                                </div>
+                            ))}
+                        </dl>
+                        <p>{product.note}</p>
+                    </article>
+                ))}
+            </div>
+
+            <p class="range-note">
+                <strong>Range note:</strong> These figures show the combined sourcing and processing envelope.
+                Exact achievable combinations depend on material grade, coating, surface requirement and order quantity.
+            </p>
+        </div>
+    </section>
+
+    <section class="coated-section">
+        <div class="container coated-grid">
+            <div class="coated-content">
+                <span class="section-tag">COLD-ROLLED & COATED STEEL</span>
+                <h2>Coil, strip, sheet and blanks</h2>
+                <p>
+                    Cold Rolled, Galvanized, PPGI, PPGL and Tinplate products can be sourced in coil form
+                    and processed to the required format. For precision processing, our combined network supports:
+                </p>
+
+                <div class="processing-specs">
+                    <div>
+                        <span>Cut-to-length sheets</span>
+                        <strong>0.20–2.00 mm</strong>
+                        <small>up to 1,650 mm wide</small>
+                    </div>
+                    <div>
+                        <span>Slit coil & strip</span>
+                        <strong>0.27–4.00 mm</strong>
+                        <small>input coils up to 2,050 mm wide</small>
+                    </div>
+                </div>
+
+                <p class="availability-copy">
+                    Mill production ranges, coating mass, paint system, colour, finish and tolerances
+                    are confirmed against each enquiry.
+                </p>
+            </div>
+
+            <div class="coated-media">
+                <img src="/images/home/prepaintedsteelcoils.png" alt="Pre-painted flat steel coils in storage" loading="lazy" />
+            </div>
+        </div>
+    </section>
+
+    <section class="processing-section">
+        <div class="container processing-grid">
+            <div>
+                <span class="section-tag">VALUE-ADDED PROCESSING</span>
+                <h2>Ready for your production line</h2>
+                <p>
+                    Beyond standard coil and sheet supply, we coordinate processing and packaging
+                    around the customer’s drawings, tolerances and downstream operation.
+                </p>
+            </div>
+
+            <ul class="service-list">
+                {services.map((service) => (
+                    <li><span aria-hidden="true">✓</span>{service}</li>
+                ))}
+            </ul>
+        </div>
+    </section>
+
+    <section class="flat-cta">
+        <div class="container flat-cta-box">
+            <div>
+                <span class="section-tag">SEND YOUR REQUIREMENT</span>
+                <h2>Need a specific grade, coating or size?</h2>
+                <p>
+                    Share the product, standard or grade, thickness, width, length or coil weight,
+                    quantity and destination. We will match the request with a suitable source.
+                </p>
+            </div>
+            <a href="/contact" class="btn-primary">Request a Flat Steel Quote</a>
+        </div>
+    </section>
+
+</MainLayout>
+
+<style>
+    .flat-hero {
+        padding: 78px 0 90px;
+        background: linear-gradient(145deg, #f5f9fc 0%, #ffffff 55%, #eaf4fb 100%);
+        overflow: hidden;
+    }
+
+    .flat-hero-grid {
+        display: grid;
+        grid-template-columns: minmax(0, 0.9fr) minmax(520px, 1.1fr);
+        gap: 64px;
+        align-items: center;
+    }
+
+    .back-link {
+        display: block;
+        width: fit-content;
+        margin-bottom: 34px;
+        color: var(--text-light);
+        font-size: 14px;
+        font-weight: 600;
+    }
+
+    .back-link:hover,
+    .text-link:hover {
+        color: var(--primary);
+    }
+
+    .flat-hero .section-tag {
+        display: block;
+    }
+
+    .flat-hero h1 {
+        max-width: 650px;
+        margin: 0 0 26px;
+        color: var(--secondary);
+        font-size: clamp(42px, 5vw, 68px);
+        line-height: 1.06;
+        letter-spacing: -2px;
+    }
+
+    .flat-hero-content > p {
+        max-width: 650px;
+        color: #526173;
+        font-size: 18px;
+        line-height: 1.8;
+    }
+
+    .hero-actions {
+        display: flex;
+        align-items: center;
+        gap: 28px;
+        margin-top: 38px;
+    }
+
+    .text-link {
+        color: var(--secondary);
+        font-weight: 700;
+    }
+
+    .flat-hero-media {
+        position: relative;
+        padding-bottom: 62px;
+    }
+
+    .flat-hero-media img {
+        display: block;
+        width: 100%;
+        min-height: 420px;
+        object-fit: cover;
+        border-radius: 20px;
+        box-shadow: 0 24px 60px rgba(11, 31, 58, 0.18);
+    }
+
+    .range-strip {
+        position: absolute;
+        right: 24px;
+        bottom: 0;
+        left: 24px;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1px;
+        overflow: hidden;
+        background: rgba(255, 255, 255, 0.92);
+        border: 1px solid rgba(255, 255, 255, 0.8);
+        border-radius: 14px;
+        box-shadow: 0 15px 40px rgba(11, 31, 58, 0.14);
+        backdrop-filter: blur(14px);
+    }
+
+    .range-strip div {
+        padding: 20px 18px;
+        text-align: center;
+    }
+
+    .range-strip strong,
+    .range-strip span {
+        display: block;
+    }
+
+    .range-strip strong {
+        color: var(--secondary);
+        font-family: "Montserrat", sans-serif;
+        font-size: 19px;
+        line-height: 1.25;
+    }
+
+    .range-strip span {
+        margin-top: 5px;
+        color: var(--text-light);
+        font-size: 11px;
+        letter-spacing: 0.7px;
+        line-height: 1.35;
+        text-transform: uppercase;
+    }
+
+    .family-section,
+    .range-section,
+    .coated-section,
+    .processing-section {
+        padding: 105px 0;
+    }
+
+    .section-heading {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) minmax(340px, 0.75fr);
+        gap: 70px;
+        align-items: end;
+        margin-bottom: 48px;
+    }
+
+    .section-heading h2,
+    .coated-content h2,
+    .processing-grid h2,
+    .flat-cta h2 {
+        margin: 0;
+        color: var(--secondary);
+        font-size: clamp(34px, 4vw, 48px);
+        text-align: left;
+    }
+
+    .section-heading p,
+    .coated-content > p,
+    .processing-grid p {
+        color: var(--text-light);
+        font-size: 17px;
+    }
+
+    .family-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 22px;
+    }
+
+    .family-card {
+        padding: 30px;
+        background: var(--white);
+        border: 1px solid var(--border);
+        border-radius: 14px;
+        transition: transform var(--transition), box-shadow var(--transition), border-color var(--transition);
+    }
+
+    .family-card:hover {
+        transform: translateY(-5px);
+        border-color: rgba(245, 130, 32, 0.45);
+        box-shadow: 0 18px 45px rgba(11, 31, 58, 0.09);
+    }
+
+    .family-code {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-width: 44px;
+        height: 30px;
+        padding: 0 10px;
+        background: #fff1e6;
+        border-radius: 6px;
+        color: var(--primary-hover);
+        font-size: 12px;
+        font-weight: 800;
+        letter-spacing: 1px;
+    }
+
+    .family-card h3 {
+        margin: 22px 0 12px;
+        color: var(--secondary);
+        font-size: 22px;
+    }
+
+    .family-card p {
+        margin: 0;
+        color: var(--text-light);
+        font-size: 15px;
+        line-height: 1.75;
+    }
+
+    .range-section {
+        background: var(--secondary);
+    }
+
+    .range-heading h2,
+    .range-heading p {
+        color: var(--white);
+    }
+
+    .range-heading p {
+        color: #cad5e2;
+    }
+
+    .range-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 24px;
+    }
+
+    .range-card {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr);
+        padding: 32px;
+        background: #ffffff;
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        border-radius: 14px;
+    }
+
+    .range-type {
+        color: var(--primary);
+        font-size: 12px;
+        font-weight: 800;
+        letter-spacing: 1.5px;
+        text-transform: uppercase;
+    }
+
+    .range-card h3 {
+        margin: 8px 0 22px;
+        color: var(--secondary);
+        font-size: 25px;
+    }
+
+    .range-card dl {
+        margin: 0 0 20px;
+        border-top: 1px solid var(--border);
+    }
+
+    .range-card dl div {
+        display: flex;
+        align-items: baseline;
+        justify-content: space-between;
+        gap: 20px;
+        padding: 12px 0;
+        border-bottom: 1px solid var(--border);
+    }
+
+    .range-card dt {
+        color: var(--text-light);
+        font-size: 14px;
+    }
+
+    .range-card dd {
+        margin: 0;
+        color: var(--secondary);
+        font-weight: 800;
+        text-align: right;
+    }
+
+    .range-card > p {
+        margin: auto 0 0;
+        color: var(--text-light);
+        font-size: 14px;
+        line-height: 1.7;
+    }
+
+    .range-note {
+        margin: 28px 0 0;
+        padding: 20px 24px;
+        color: #cad5e2;
+        background: rgba(255, 255, 255, 0.06);
+        border-left: 3px solid var(--primary);
+        border-radius: 0 8px 8px 0;
+        font-size: 14px;
+    }
+
+    .range-note strong {
+        color: var(--white);
+    }
+
+    .coated-section {
+        background: var(--light-gray);
+    }
+
+    .coated-grid {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) minmax(420px, 0.85fr);
+        gap: 70px;
+        align-items: center;
+    }
+
+    .coated-content h2 {
+        margin-bottom: 24px;
+    }
+
+    .processing-specs {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 16px;
+        margin: 34px 0 24px;
+    }
+
+    .processing-specs div {
+        padding: 24px;
+        background: var(--white);
+        border: 1px solid var(--border);
+        border-radius: 12px;
+    }
+
+    .processing-specs span,
+    .processing-specs strong,
+    .processing-specs small {
+        display: block;
+    }
+
+    .processing-specs span {
+        color: var(--text-light);
+        font-size: 13px;
+        font-weight: 700;
+        text-transform: uppercase;
+    }
+
+    .processing-specs strong {
+        margin: 7px 0 2px;
+        color: var(--secondary);
+        font-family: "Montserrat", sans-serif;
+        font-size: 24px;
+    }
+
+    .processing-specs small {
+        color: var(--text-light);
+    }
+
+    .availability-copy {
+        font-size: 14px !important;
+    }
+
+    .coated-media img {
+        display: block;
+        width: 100%;
+        min-height: 510px;
+        object-fit: cover;
+        border-radius: 18px;
+        box-shadow: 0 22px 52px rgba(11, 31, 58, 0.16);
+    }
+
+    .processing-grid {
+        display: grid;
+        grid-template-columns: minmax(0, 0.8fr) minmax(500px, 1.2fr);
+        gap: 80px;
+        align-items: start;
+    }
+
+    .processing-grid h2 {
+        margin-bottom: 24px;
+    }
+
+    .service-list {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+    }
+
+    .service-list li {
+        display: flex;
+        gap: 12px;
+        align-items: flex-start;
+        min-height: 68px;
+        padding: 18px;
+        color: var(--secondary);
+        background: var(--light-blue);
+        border-radius: 10px;
+        font-weight: 600;
+        line-height: 1.5;
+    }
+
+    .service-list span {
+        color: var(--primary);
+        font-weight: 800;
+    }
+
+    .flat-cta {
+        padding: 88px 0;
+        background: linear-gradient(135deg, #eaf4fb, #ffffff);
+    }
+
+    .flat-cta-box {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) auto;
+        gap: 60px;
+        align-items: center;
+    }
+
+    .flat-cta h2 {
+        margin-bottom: 18px;
+    }
+
+    .flat-cta p {
+        max-width: 780px;
+        color: var(--text-light);
+        font-size: 17px;
+    }
+
+    .flat-cta .btn-primary {
+        white-space: nowrap;
+    }
+
+    @media (max-width: 1050px) {
+        .flat-hero-grid,
+        .coated-grid,
+        .processing-grid {
+            grid-template-columns: 1fr;
+        }
+
+        .flat-hero-grid,
+        .coated-grid {
+            gap: 48px;
+        }
+
+        .processing-grid {
+            gap: 36px;
+        }
+
+        .flat-hero-media img {
+            min-height: 360px;
+        }
+
+        .coated-media img {
+            min-height: 420px;
+        }
+    }
+
+    @media (max-width: 800px) {
+        .flat-hero,
+        .family-section,
+        .range-section,
+        .coated-section,
+        .processing-section {
+            padding: 78px 0;
+        }
+
+        .section-heading,
+        .flat-cta-box {
+            grid-template-columns: 1fr;
+            gap: 22px;
+        }
+
+        .family-grid,
+        .range-grid {
+            grid-template-columns: 1fr;
+        }
+
+        .flat-cta-box {
+            align-items: start;
+        }
+    }
+
+    @media (max-width: 560px) {
+        .flat-hero h1 {
+            font-size: 40px;
+            letter-spacing: -1px;
+        }
+
+        .hero-actions,
+        .processing-specs,
+        .service-list {
+            grid-template-columns: 1fr;
+        }
+
+        .hero-actions {
+            display: flex;
+            align-items: flex-start;
+            flex-direction: column;
+        }
+
+        .flat-hero-media {
+            padding-bottom: 0;
+        }
+
+        .flat-hero-media img {
+            min-height: 280px;
+        }
+
+        .range-strip {
+            position: static;
+            grid-template-columns: 1fr;
+            margin-top: 14px;
+        }
+
+        .range-strip div {
+            padding: 15px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .range-strip div:last-child {
+            border-bottom: 0;
+        }
+
+        .range-card,
+        .family-card {
+            padding: 25px;
+        }
+
+        .coated-media img {
+            min-height: 320px;
+        }
+
+        .flat-cta .btn-primary {
+            white-space: normal;
+            text-align: center;
+        }
+    }
+</style>
