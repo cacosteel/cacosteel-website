@@ -1,0 +1,950 @@
+---
+import MainLayout from "../../layouts/MainLayout.astro";
+
+const categories = [
+    {
+        number: "01",
+        name: "Standard",
+        href: "#standard",
+        description: "Round tubes and square, rectangular, oval, elliptical and D-shaped profiles.",
+        tags: ["Round", "SHS & RHS", "Oval", "D profiles"]
+    },
+    {
+        number: "02",
+        name: "Special",
+        href: "#special",
+        description: "Open and welded profiles developed for a function, component or customer drawing.",
+        tags: ["C & U", "Custom sections", "Rails", "Formed profiles"]
+    },
+    {
+        number: "03",
+        name: "Automotive",
+        href: "#automotive",
+        description: "Precision profiles and formed components for vehicles, trailers and transport systems.",
+        tags: ["Chassis", "Seat rails", "Door rails", "Bumpers"]
+    },
+    {
+        number: "04",
+        name: "Solar",
+        href: "#solar",
+        description: "Structural profiles and connection components for ground and roof mounting systems.",
+        tags: ["Fixed", "Tracker", "Roof mount", "Connections"]
+    }
+];
+
+const standardShapes = [
+    {
+        code: "CHS",
+        name: "Round Tubes",
+        description: "Carbon-steel tubes for general fabrication, machinery, furniture and industrial applications."
+    },
+    {
+        code: "SHS",
+        name: "Square Profiles",
+        description: "Square hollow sections for fabricated structures, frames, equipment and manufactured products."
+    },
+    {
+        code: "RHS",
+        name: "Rectangular Profiles",
+        description: "Rectangular hollow sections supplied for structural, industrial and component applications."
+    },
+    {
+        code: "SHP",
+        name: "Oval, Elliptical & D Profiles",
+        description: "Shaped profiles for designs that require a distinct geometry, surface or assembly function."
+    }
+];
+
+const specialApplications = [
+    "C and U open profiles",
+    "Special-section welded profiles",
+    "Furniture and shelving profiles",
+    "Conveyor and transport-system profiles",
+    "Industrial rails and sliding-door rails",
+    "HVAC and air-handling-unit profiles",
+    "Roller shutter, awning and pergola profiles",
+    "Warehouse, agriculture and building profiles"
+];
+
+const automotiveProducts = [
+    "Door window frames and window rails",
+    "Glass-running and sliding-door rails",
+    "Chassis profiles and truck chassis parts",
+    "Front and rear bumper profiles",
+    "Seat rails, frames and cradles",
+    "Vehicle and bus rain gutters",
+    "Trailer side rails and side raves",
+    "Alusi-coated exhaust tubes and air-filter housings"
+];
+
+const solarSystems = [
+    {
+        title: "Solar Construction Profiles",
+        description: "Standard and special open or seam-welded profiles, including perforated special sections and omega profiles."
+    },
+    {
+        title: "Ground Mounting Systems",
+        description: "Profiles for fixed and tracker systems, including foundation posts, sigma piles, purlins and girder profiles."
+    },
+    {
+        title: "Roof Mounting Systems",
+        description: "Open, welded and special-section profiles configured for project-specific roof support arrangements."
+    },
+    {
+        title: "Connection Components",
+        description: "Edge and middle clamp components matched to the supporting profile, material thickness and fixing design."
+    }
+];
+
+const capabilities = [
+    ["Supply forms", "Standard tubes, open profiles, seam-welded profiles and custom sections"],
+    ["Materials & finishes", "Carbon steel, hot-rolled, galvanized and pre-painted options by enquiry"],
+    ["Length preparation", "CNC and multi-saw cut-to-length production"],
+    ["Secondary operations", "Punching, bending, edge reduction, edging and end cutting"],
+    ["Tube finishing", "Internal deburring and weld-area zinc spray where specified"],
+    ["Inspection options", "Physical and chemical tests, Eddy Current and leak testing by requirement"]
+];
+
+const quoteDetails = [
+    "Profile type or technical drawing",
+    "Outside dimensions and wall thickness",
+    "Steel grade, standard and coating",
+    "Length, tolerances and end condition",
+    "Hole pattern or secondary operations",
+    "Quantity, packing and destination"
+];
+---
+
+<MainLayout
+    title="Steel Tubes & Profiles | CACO Steel"
+    description="Explore CACO Steel's standard, special, automotive and solar steel tubes and profiles, with project-specific materials, processing, testing and finishing options."
+    image="/images/home/tubesbanner.png"
+>
+    <section class="tube-hero">
+        <div class="container hero-grid">
+            <div class="hero-content">
+                <a class="back-link" href="/products"><span aria-hidden="true">←</span> All products</a>
+                <span class="section-tag">STEEL TUBES & PROFILES</span>
+                <h1>Tube and profile solutions for industry.</h1>
+                <p>
+                    CACO Steel supplies standard and engineered steel sections through a qualified
+                    production network. We match each enquiry with the required shape, material,
+                    processing, testing and delivery terms.
+                </p>
+                <div class="hero-actions">
+                    <a href="/contact" class="btn-primary">Request a Quote</a>
+                    <a href="#product-categories" class="text-link">Explore the range <span aria-hidden="true">↓</span></a>
+                </div>
+            </div>
+
+            <div class="hero-media">
+                <img src="/images/home/tubesbanner.png" alt="Steel tubes and profiles arranged for industrial supply" />
+                <div class="hero-summary" aria-label="Steel tubes and profiles supply summary">
+                    <div><strong>4</strong><span>product categories</span></div>
+                    <div><strong>Standard</strong><span>or made to drawing</span></div>
+                    <div><strong>Cut & formed</strong><span>ready for assembly</span></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="product-categories" class="category-section">
+        <div class="container">
+            <div class="section-heading">
+                <div>
+                    <span class="section-tag">PRODUCT RANGE</span>
+                    <h2>Four focused categories</h2>
+                </div>
+                <p>
+                    Start with the application. We coordinate the suitable standard section or a
+                    custom-manufactured profile around your drawing and production requirement.
+                </p>
+            </div>
+
+            <div class="category-grid">
+                {categories.map((category) => (
+                    <a class="category-card" href={category.href}>
+                        <span class="category-number">{category.number}</span>
+                        <h3>{category.name}</h3>
+                        <p>{category.description}</p>
+                        <div class="tag-list">
+                            {category.tags.map((tag) => <span>{tag}</span>)}
+                        </div>
+                        <span class="category-link">View details <span aria-hidden="true">↓</span></span>
+                    </a>
+                ))}
+            </div>
+        </div>
+    </section>
+
+    <section id="standard" class="detail-section standard-section">
+        <div class="container">
+            <div class="detail-heading">
+                <div class="detail-index">01</div>
+                <div>
+                    <span class="section-tag">STANDARD TUBES & PROFILES</span>
+                    <h2>Core shapes for fabrication and manufacturing</h2>
+                    <p>
+                        Standard tube and hollow-section requirements can be supplied in commercial
+                        lengths or cut to order. Seamless, welded and galvanized enquiries are matched
+                        to the requested standard, grade and end use.
+                    </p>
+                </div>
+            </div>
+
+            <div class="shape-grid">
+                {standardShapes.map((shape) => (
+                    <article class="shape-card">
+                        <span>{shape.code}</span>
+                        <h3>{shape.name}</h3>
+                        <p>{shape.description}</p>
+                    </article>
+                ))}
+            </div>
+
+            <div class="detail-note">
+                <strong>Supply options</strong>
+                <p>
+                    Hot-rolled, galvanized and pre-painted carbon-steel options are available by enquiry.
+                    Dimensions, wall thickness, length, tolerances and test requirements are confirmed
+                    against the applicable standard or customer specification.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section id="special" class="detail-section special-section">
+        <div class="container detail-layout">
+            <div class="detail-copy">
+                <div class="detail-index">02</div>
+                <span class="section-tag">SPECIAL PROFILES</span>
+                <h2>Custom sections shaped around the application</h2>
+                <p>
+                    Open and seam-welded profiles can be developed from a drawing or functional brief.
+                    Tooling, geometry and secondary operations are coordinated as one supply package,
+                    reducing additional work at the customer’s production line.
+                </p>
+                <div class="process-line" aria-label="Typical special profile workflow">
+                    <span>Drawing</span><i aria-hidden="true">→</i><span>Tooling</span><i aria-hidden="true">→</i><span>Forming</span><i aria-hidden="true">→</i><span>Finishing</span>
+                </div>
+            </div>
+
+            <ul class="product-list">
+                {specialApplications.map((item) => (
+                    <li><span aria-hidden="true">✓</span>{item}</li>
+                ))}
+            </ul>
+        </div>
+    </section>
+
+    <section id="automotive" class="detail-section automotive-section">
+        <div class="container detail-layout reverse">
+            <div class="detail-copy">
+                <div class="detail-index">03</div>
+                <span class="section-tag">AUTOMOTIVE PROFILES</span>
+                <h2>Precision components for vehicles and transport</h2>
+                <p>
+                    Automotive and transport profiles can be supplied as formed sections or prepared
+                    components with cutting, punching, bending and end finishing. Dimensional control,
+                    material traceability and test scope are set to the project requirement.
+                </p>
+                <div class="application-tags">
+                    <span>Passenger vehicles</span>
+                    <span>Commercial vehicles</span>
+                    <span>Buses</span>
+                    <span>Trucks & trailers</span>
+                </div>
+            </div>
+
+            <ul class="product-list dark-list">
+                {automotiveProducts.map((item) => (
+                    <li><span aria-hidden="true">✓</span>{item}</li>
+                ))}
+            </ul>
+        </div>
+    </section>
+
+    <section id="solar" class="detail-section solar-section">
+        <div class="container">
+            <div class="detail-heading">
+                <div class="detail-index">04</div>
+                <div>
+                    <span class="section-tag">SOLAR PROFILES</span>
+                    <h2>Steel support systems from foundation to panel</h2>
+                    <p>
+                        Project-specific solar profiles are available for ground-mounted and rooftop
+                        installations. Sections, perforations and connection details are produced to the
+                        structural design and the required corrosion-protection system.
+                    </p>
+                </div>
+            </div>
+
+            <div class="solar-grid">
+                {solarSystems.map((system) => (
+                    <article class="solar-card">
+                        <span class="solar-icon" aria-hidden="true"></span>
+                        <h3>{system.title}</h3>
+                        <p>{system.description}</p>
+                    </article>
+                ))}
+            </div>
+
+            <p class="solar-note">
+                Fixed and tracker ground systems can be supported. Typical processing includes punching,
+                bending, edge forming and cutting for sections with special cross-sections and hole patterns.
+            </p>
+        </div>
+    </section>
+
+    <section class="capability-section">
+        <div class="container capability-layout">
+            <div>
+                <span class="section-tag">SUPPLY & PROCESSING</span>
+                <h2>A clear specification for every enquiry</h2>
+                <p>
+                    The achievable combination depends on section geometry, material grade, coating,
+                    tolerances and volume. CACO Steel confirms the complete production route before offer.
+                </p>
+            </div>
+
+            <dl class="capability-list">
+                {capabilities.map(([term, description]) => (
+                    <div>
+                        <dt>{term}</dt>
+                        <dd>{description}</dd>
+                    </div>
+                ))}
+            </dl>
+        </div>
+    </section>
+
+    <section class="quote-section">
+        <div class="container quote-box">
+            <div class="quote-copy">
+                <span class="section-tag">SEND YOUR REQUIREMENT</span>
+                <h2>Have a standard size or a custom drawing?</h2>
+                <p>
+                    Share the main details below and we will identify a suitable production route,
+                    confirm availability and prepare an offer.
+                </p>
+                <a href="/contact" class="btn-primary">Request a Steel Tube Quote</a>
+            </div>
+
+            <ul class="quote-list">
+                {quoteDetails.map((detail, index) => (
+                    <li><span>{String(index + 1).padStart(2, "0")}</span>{detail}</li>
+                ))}
+            </ul>
+        </div>
+    </section>
+</MainLayout>
+
+<style>
+    .tube-hero {
+        padding: 78px 0 90px;
+        overflow: hidden;
+        background: linear-gradient(145deg, #f5f9fc 0%, #ffffff 55%, #eaf4fb 100%);
+    }
+
+    .hero-grid {
+        display: grid;
+        grid-template-columns: minmax(0, 0.9fr) minmax(520px, 1.1fr);
+        gap: 64px;
+        align-items: center;
+    }
+
+    .back-link {
+        display: block;
+        width: fit-content;
+        margin-bottom: 34px;
+        color: var(--text-light);
+        font-size: 14px;
+        font-weight: 600;
+    }
+
+    .back-link:hover,
+    .text-link:hover {
+        color: var(--primary);
+    }
+
+    .tube-hero .section-tag {
+        display: block;
+    }
+
+    .tube-hero h1 {
+        max-width: 650px;
+        margin: 0 0 26px;
+        color: var(--secondary);
+        font-size: clamp(42px, 5vw, 68px);
+        line-height: 1.06;
+        letter-spacing: -2px;
+    }
+
+    .hero-content > p {
+        max-width: 650px;
+        color: #526173;
+        font-size: 18px;
+        line-height: 1.8;
+    }
+
+    .hero-actions {
+        display: flex;
+        align-items: center;
+        gap: 28px;
+        margin-top: 38px;
+    }
+
+    .text-link {
+        color: var(--secondary);
+        font-weight: 700;
+    }
+
+    .hero-media {
+        position: relative;
+        padding-bottom: 62px;
+    }
+
+    .hero-media img {
+        display: block;
+        width: 100%;
+        min-height: 420px;
+        object-fit: cover;
+        border-radius: 20px;
+        box-shadow: 0 24px 60px rgba(11, 31, 58, 0.18);
+    }
+
+    .hero-summary {
+        position: absolute;
+        right: 24px;
+        bottom: 0;
+        left: 24px;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1px;
+        overflow: hidden;
+        background: rgba(255, 255, 255, 0.94);
+        border: 1px solid rgba(255, 255, 255, 0.82);
+        border-radius: 14px;
+        box-shadow: 0 15px 40px rgba(11, 31, 58, 0.14);
+        backdrop-filter: blur(14px);
+    }
+
+    .hero-summary div {
+        padding: 20px 16px;
+        text-align: center;
+    }
+
+    .hero-summary strong,
+    .hero-summary span {
+        display: block;
+    }
+
+    .hero-summary strong {
+        color: var(--secondary);
+        font-family: "Montserrat", sans-serif;
+        font-size: 19px;
+        line-height: 1.25;
+    }
+
+    .hero-summary span {
+        margin-top: 5px;
+        color: var(--text-light);
+        font-size: 11px;
+        letter-spacing: 0.7px;
+        line-height: 1.35;
+        text-transform: uppercase;
+    }
+
+    .category-section,
+    .detail-section,
+    .capability-section {
+        padding: 105px 0;
+    }
+
+    .section-heading,
+    .detail-heading {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) minmax(340px, 0.75fr);
+        gap: 70px;
+        align-items: end;
+        margin-bottom: 48px;
+    }
+
+    .detail-heading {
+        grid-template-columns: 100px minmax(0, 820px);
+        align-items: start;
+    }
+
+    .section-heading h2,
+    .detail-heading h2,
+    .detail-copy h2,
+    .capability-section h2,
+    .quote-section h2 {
+        margin: 0;
+        color: var(--secondary);
+        font-size: clamp(34px, 4vw, 48px);
+        line-height: 1.15;
+        text-align: left;
+    }
+
+    .section-heading p,
+    .detail-heading p,
+    .detail-copy > p,
+    .capability-section p,
+    .quote-copy > p {
+        color: var(--text-light);
+        font-size: 17px;
+    }
+
+    .detail-heading h2,
+    .detail-copy h2,
+    .capability-section h2,
+    .quote-section h2 {
+        margin: 8px 0 22px;
+    }
+
+    .category-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 20px;
+    }
+
+    .category-card {
+        display: flex;
+        flex-direction: column;
+        min-height: 350px;
+        padding: 30px;
+        color: inherit;
+        background: var(--white);
+        border: 1px solid var(--border);
+        border-radius: 14px;
+        transition: transform var(--transition), box-shadow var(--transition), border-color var(--transition);
+    }
+
+    .category-card:hover {
+        transform: translateY(-5px);
+        border-color: rgba(245, 130, 32, 0.45);
+        box-shadow: 0 18px 45px rgba(11, 31, 58, 0.09);
+    }
+
+    .category-number,
+    .detail-index {
+        color: var(--primary);
+        font-family: "Montserrat", sans-serif;
+        font-size: 14px;
+        font-weight: 800;
+        letter-spacing: 1px;
+    }
+
+    .category-card h3 {
+        margin: 18px 0 12px;
+        color: var(--secondary);
+        font-size: 24px;
+    }
+
+    .category-card p {
+        margin: 0;
+        color: var(--text-light);
+        font-size: 14px;
+        line-height: 1.7;
+    }
+
+    .tag-list,
+    .application-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 7px;
+        margin-top: 22px;
+    }
+
+    .tag-list span,
+    .application-tags span {
+        padding: 6px 9px;
+        color: #43556a;
+        background: var(--light-blue);
+        border-radius: 5px;
+        font-size: 11px;
+        font-weight: 700;
+    }
+
+    .category-link {
+        margin-top: auto;
+        padding-top: 24px;
+        color: var(--primary-hover);
+        font-size: 13px;
+        font-weight: 800;
+    }
+
+    .detail-index {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 74px;
+        height: 74px;
+        background: #fff1e6;
+        border-radius: 50%;
+        font-size: 19px;
+    }
+
+    .shape-grid,
+    .solar-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 20px;
+    }
+
+    .shape-card,
+    .solar-card {
+        padding: 28px;
+        background: var(--white);
+        border: 1px solid var(--border);
+        border-radius: 14px;
+    }
+
+    .shape-card > span {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-width: 48px;
+        height: 32px;
+        padding: 0 10px;
+        color: var(--primary-hover);
+        background: #fff1e6;
+        border-radius: 6px;
+        font-size: 12px;
+        font-weight: 800;
+        letter-spacing: 1px;
+    }
+
+    .shape-card h3,
+    .solar-card h3 {
+        margin: 20px 0 10px;
+        color: var(--secondary);
+        font-size: 20px;
+    }
+
+    .shape-card p,
+    .solar-card p {
+        margin: 0;
+        color: var(--text-light);
+        font-size: 14px;
+        line-height: 1.7;
+    }
+
+    .detail-note,
+    .solar-note {
+        margin-top: 24px;
+        padding: 22px 26px;
+        color: #526173;
+        background: var(--light-blue);
+        border-left: 3px solid var(--primary);
+        border-radius: 0 10px 10px 0;
+    }
+
+    .detail-note strong {
+        display: block;
+        margin-bottom: 5px;
+        color: var(--secondary);
+    }
+
+    .detail-note p,
+    .solar-note {
+        margin-bottom: 0;
+        font-size: 14px;
+    }
+
+    .special-section,
+    .capability-section {
+        background: var(--light-gray);
+    }
+
+    .detail-layout,
+    .capability-layout,
+    .quote-box {
+        display: grid;
+        grid-template-columns: minmax(0, 0.85fr) minmax(480px, 1.15fr);
+        gap: 80px;
+        align-items: start;
+    }
+
+    .detail-copy .detail-index {
+        margin-bottom: 30px;
+    }
+
+    .process-line {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 9px;
+        margin-top: 30px;
+    }
+
+    .process-line span {
+        padding: 9px 12px;
+        color: var(--secondary);
+        background: var(--white);
+        border: 1px solid var(--border);
+        border-radius: 7px;
+        font-size: 12px;
+        font-weight: 800;
+    }
+
+    .process-line i {
+        color: var(--primary);
+        font-style: normal;
+    }
+
+    .product-list,
+    .quote-list {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+    }
+
+    .product-list li {
+        display: flex;
+        gap: 11px;
+        align-items: flex-start;
+        min-height: 76px;
+        padding: 18px;
+        color: var(--secondary);
+        background: var(--white);
+        border: 1px solid var(--border);
+        border-radius: 10px;
+        font-weight: 600;
+        line-height: 1.45;
+    }
+
+    .product-list li span {
+        color: var(--primary);
+        font-weight: 800;
+    }
+
+    .automotive-section {
+        background: var(--secondary);
+    }
+
+    .automotive-section .detail-index {
+        color: #ffffff;
+        background: var(--primary);
+    }
+
+    .automotive-section .section-tag,
+    .automotive-section h2 {
+        color: var(--white);
+    }
+
+    .automotive-section .detail-copy > p {
+        color: #c9d5e2;
+    }
+
+    .application-tags span {
+        color: #d9e4ef;
+        background: rgba(255, 255, 255, 0.08);
+        border: 1px solid rgba(255, 255, 255, 0.12);
+    }
+
+    .dark-list li {
+        color: var(--white);
+        background: rgba(255, 255, 255, 0.07);
+        border-color: rgba(255, 255, 255, 0.12);
+    }
+
+    .solar-section {
+        background: linear-gradient(180deg, #ffffff, #f1f8fb);
+    }
+
+    .solar-card {
+        position: relative;
+        overflow: hidden;
+    }
+
+    .solar-card::after {
+        position: absolute;
+        right: -32px;
+        bottom: -32px;
+        width: 92px;
+        height: 92px;
+        background: rgba(245, 130, 32, 0.08);
+        border-radius: 50%;
+        content: "";
+    }
+
+    .solar-icon {
+        display: block;
+        width: 36px;
+        height: 36px;
+        border: 6px solid var(--primary);
+        border-radius: 50%;
+        box-shadow: 0 0 0 7px #fff1e6;
+    }
+
+    .solar-note {
+        max-width: 900px;
+    }
+
+    .capability-layout {
+        grid-template-columns: minmax(0, 0.78fr) minmax(520px, 1.22fr);
+    }
+
+    .capability-list {
+        margin: 0;
+        border-top: 1px solid #d9dee5;
+    }
+
+    .capability-list div {
+        display: grid;
+        grid-template-columns: 170px 1fr;
+        gap: 25px;
+        padding: 18px 0;
+        border-bottom: 1px solid #d9dee5;
+    }
+
+    .capability-list dt {
+        color: var(--secondary);
+        font-size: 13px;
+        font-weight: 800;
+        text-transform: uppercase;
+    }
+
+    .capability-list dd {
+        margin: 0;
+        color: #526173;
+        font-size: 14px;
+    }
+
+    .quote-section {
+        padding: 88px 0;
+        background: linear-gradient(135deg, #eaf4fb, #ffffff);
+    }
+
+    .quote-box {
+        align-items: center;
+    }
+
+    .quote-copy .btn-primary {
+        display: inline-block;
+        margin-top: 28px;
+    }
+
+    .quote-list li {
+        display: flex;
+        gap: 14px;
+        align-items: center;
+        min-height: 64px;
+        padding: 14px 16px;
+        color: var(--secondary);
+        background: var(--white);
+        border: 1px solid var(--border);
+        border-radius: 9px;
+        font-size: 14px;
+        font-weight: 600;
+    }
+
+    .quote-list span {
+        color: var(--primary);
+        font-size: 11px;
+        font-weight: 800;
+    }
+
+    @media (max-width: 1080px) {
+        .hero-grid,
+        .detail-layout,
+        .capability-layout,
+        .quote-box {
+            grid-template-columns: 1fr;
+        }
+
+        .hero-grid {
+            gap: 48px;
+        }
+
+        .category-grid,
+        .shape-grid,
+        .solar-grid {
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        .category-card {
+            min-height: 320px;
+        }
+    }
+
+    @media (max-width: 800px) {
+        .tube-hero,
+        .category-section,
+        .detail-section,
+        .capability-section {
+            padding: 78px 0;
+        }
+
+        .section-heading,
+        .detail-heading {
+            grid-template-columns: 1fr;
+            gap: 22px;
+        }
+
+        .detail-heading {
+            margin-bottom: 38px;
+        }
+
+        .quote-section {
+            padding: 72px 0;
+        }
+    }
+
+    @media (max-width: 560px) {
+        .tube-hero h1 {
+            font-size: 40px;
+            letter-spacing: -1px;
+        }
+
+        .hero-actions {
+            align-items: flex-start;
+            flex-direction: column;
+        }
+
+        .hero-media {
+            padding-bottom: 0;
+        }
+
+        .hero-media img {
+            min-height: 270px;
+        }
+
+        .hero-summary {
+            position: static;
+            grid-template-columns: 1fr;
+            margin-top: 14px;
+        }
+
+        .hero-summary div {
+            padding: 15px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .hero-summary div:last-child {
+            border-bottom: 0;
+        }
+
+        .category-grid,
+        .shape-grid,
+        .solar-grid,
+        .product-list,
+        .quote-list {
+            grid-template-columns: 1fr;
+        }
+
+        .category-card {
+            min-height: 0;
+        }
+
+        .capability-list div {
+            grid-template-columns: 1fr;
+            gap: 5px;
+        }
+    }
+</style>
