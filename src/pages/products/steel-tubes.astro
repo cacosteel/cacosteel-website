@@ -36,22 +36,51 @@ const standardShapes = [
     {
         code: "CHS",
         name: "Round Tubes",
-        description: "Carbon-steel tubes for general fabrication, machinery, furniture and industrial applications."
+        description: "Carbon-steel tubes for general fabrication, machinery, furniture and industrial applications.",
+        specs: [["Outside diameter", "10–191 mm"], ["Wall thickness", "0.50–8.00 mm"]]
     },
     {
         code: "SHS",
         name: "Square Profiles",
-        description: "Square hollow sections for fabricated structures, frames, equipment and manufactured products."
+        description: "Square hollow sections for fabricated structures, frames, equipment and manufactured products.",
+        specs: [["Section size", "10×10–150×150 mm"], ["Wall thickness", "0.50–8.00 mm"]]
     },
     {
         code: "RHS",
         name: "Rectangular Profiles",
-        description: "Rectangular hollow sections supplied for structural, industrial and component applications."
+        description: "Rectangular hollow sections supplied for structural, industrial and component applications.",
+        specs: [["Section size", "10×20–100×200 mm"], ["Wall thickness", "0.50–8.00 mm"]]
     },
     {
-        code: "SHP",
-        name: "Oval, Elliptical & D Profiles",
-        description: "Shaped profiles for designs that require a distinct geometry, surface or assembly function."
+        code: "OVL",
+        name: "Oval & Elliptical Profiles",
+        description: "Rounded profiles for designs that require a distinct geometry, surface or assembly function.",
+        specs: [["Section size", "14×8–80×25 mm"], ["Wall thickness", "0.80–3.00 mm"]]
+    },
+    {
+        code: "D",
+        name: "D Profiles",
+        description: "Flat-sided shaped profiles for furniture, equipment and specialist manufactured products.",
+        specs: [["Section size", "30×15–60×50 mm"], ["Wall thickness", "0.80–2.00 mm"]]
+    }
+];
+
+const specialRanges = [
+    {
+        name: "C Profiles",
+        specs: [["Section A", "5–245 mm"], ["Section B", "10–500 mm"], ["Return C", "10–150 mm"], ["Thickness S", "0.50–8.00 mm"]]
+    },
+    {
+        name: "U Profiles",
+        specs: [["Section A", "5–500 mm"], ["Section B", "10–245 mm"], ["Thickness S", "0.50–8.00 mm"], ["Length", "Cut to order"]]
+    },
+    {
+        name: "L Profiles",
+        specs: [["Section A", "10–500 mm"], ["Section B", "5–245 mm"], ["Thickness S", "0.50–8.00 mm"], ["Length", "Cut to order"]]
+    },
+    {
+        name: "Open Special Sections",
+        specs: [["Main dimension", "Up to 400 mm"], ["Secondary dimension", "Up to 245 mm"], ["Return / lip", "Up to 150 mm"], ["Thickness S", "0.50–8.00 mm"]]
     }
 ];
 
@@ -77,6 +106,13 @@ const automotiveProducts = [
     "Alusi-coated exhaust tubes and air-filter housings"
 ];
 
+const automotiveRange = [
+    ["Catalogue cross-sections", "16.1×29.4–298.6×162.1 mm"],
+    ["Shown wall thicknesses", "1.00–4.00 mm"],
+    ["Custom forming envelope", "0.50–8.00 mm, subject to geometry"],
+    ["Finished length", "Cut to drawing"]
+];
+
 const solarSystems = [
     {
         title: "Solar Construction Profiles",
@@ -94,6 +130,13 @@ const solarSystems = [
         title: "Connection Components",
         description: "Edge and middle clamp components matched to the supporting profile, material thickness and fixing design."
     }
+];
+
+const solarRange = [
+    ["Cross-section", "Made to project drawing"],
+    ["Open-profile thickness", "0.50–8.00 mm"],
+    ["Developed strip width", "Up to 1,000 mm"],
+    ["Length & hole pattern", "Produced to order"]
 ];
 
 const capabilities = [
@@ -140,9 +183,9 @@ const quoteDetails = [
             <div class="hero-media">
                 <img src="/images/home/tubesbanner.png" alt="Steel tubes and profiles arranged for industrial supply" />
                 <div class="hero-summary" aria-label="Steel tubes and profiles supply summary">
-                    <div><strong>4</strong><span>product categories</span></div>
-                    <div><strong>Standard</strong><span>or made to drawing</span></div>
-                    <div><strong>Cut & formed</strong><span>ready for assembly</span></div>
+                    <div><strong>Ø10–191 mm</strong><span>round tube outside diameter</span></div>
+                    <div><strong>Up to 100×200</strong><span>rectangular profile</span></div>
+                    <div><strong>0.50–8.00 mm</strong><span>wall thickness range</span></div>
                 </div>
             </div>
         </div>
@@ -198,69 +241,106 @@ const quoteDetails = [
                         <span>{shape.code}</span>
                         <h3>{shape.name}</h3>
                         <p>{shape.description}</p>
+                        <dl class="card-specs">
+                            {shape.specs.map(([label, value]) => (
+                                <div><dt>{label}</dt><dd>{value}</dd></div>
+                            ))}
+                        </dl>
                     </article>
                 ))}
             </div>
 
             <div class="detail-note">
-                <strong>Supply options</strong>
+                <strong>Range note</strong>
                 <p>
-                    Hot-rolled, galvanized and pre-painted carbon-steel options are available by enquiry.
-                    Dimensions, wall thickness, length, tolerances and test requirements are confirmed
-                    against the applicable standard or customer specification.
+                    The figures above show the combined catalogue envelope; not every wall thickness is
+                    available for every section size. Exact combinations, commercial length, tolerances,
+                    material and testing are confirmed against each enquiry.
                 </p>
             </div>
         </div>
     </section>
 
     <section id="special" class="detail-section special-section">
-        <div class="container detail-layout">
-            <div class="detail-copy">
-                <div class="detail-index">02</div>
-                <span class="section-tag">SPECIAL PROFILES</span>
-                <h2>Custom sections shaped around the application</h2>
-                <p>
-                    Open and seam-welded profiles can be developed from a drawing or functional brief.
-                    Tooling, geometry and secondary operations are coordinated as one supply package,
-                    reducing additional work at the customer’s production line.
-                </p>
-                <div class="process-line" aria-label="Typical special profile workflow">
-                    <span>Drawing</span><i aria-hidden="true">→</i><span>Tooling</span><i aria-hidden="true">→</i><span>Forming</span><i aria-hidden="true">→</i><span>Finishing</span>
+        <div class="container">
+            <div class="detail-layout">
+                <div class="detail-copy">
+                    <div class="detail-index">02</div>
+                    <span class="section-tag">SPECIAL PROFILES</span>
+                    <h2>Custom sections shaped around the application</h2>
+                    <p>
+                        Open and seam-welded profiles can be developed from a drawing or functional brief.
+                        Tooling, geometry and secondary operations are coordinated as one supply package,
+                        reducing additional work at the customer’s production line.
+                    </p>
+                    <div class="process-line" aria-label="Typical special profile workflow">
+                        <span>Drawing</span><i aria-hidden="true">→</i><span>Tooling</span><i aria-hidden="true">→</i><span>Forming</span><i aria-hidden="true">→</i><span>Finishing</span>
+                    </div>
                 </div>
+
+                <ul class="product-list">
+                    {specialApplications.map((item) => (
+                        <li><span aria-hidden="true">✓</span>{item}</li>
+                    ))}
+                </ul>
             </div>
 
-            <ul class="product-list">
-                {specialApplications.map((item) => (
-                    <li><span aria-hidden="true">✓</span>{item}</li>
-                ))}
-            </ul>
+            <div class="size-block">
+                <div class="size-block-heading">
+                    <span class="section-tag">DIMENSIONAL RANGE</span>
+                    <h3>C, U, L and open profiles</h3>
+                    <p>Dimensions A, B and C refer to the principal legs and returns of each section.</p>
+                </div>
+                <div class="size-grid">
+                    {specialRanges.map((range) => (
+                        <article class="size-card">
+                            <h4>{range.name}</h4>
+                            <dl class="card-specs">
+                                {range.specs.map(([label, value]) => (
+                                    <div><dt>{label}</dt><dd>{value}</dd></div>
+                                ))}
+                            </dl>
+                        </article>
+                    ))}
+                </div>
+                <p class="range-disclaimer">Exact achievable geometry depends on bend radii, material, coating, hole pattern and order volume.</p>
+            </div>
         </div>
     </section>
 
     <section id="automotive" class="detail-section automotive-section">
-        <div class="container detail-layout reverse">
-            <div class="detail-copy">
-                <div class="detail-index">03</div>
-                <span class="section-tag">AUTOMOTIVE PROFILES</span>
-                <h2>Precision components for vehicles and transport</h2>
-                <p>
-                    Automotive and transport profiles can be supplied as formed sections or prepared
-                    components with cutting, punching, bending and end finishing. Dimensional control,
-                    material traceability and test scope are set to the project requirement.
-                </p>
-                <div class="application-tags">
-                    <span>Passenger vehicles</span>
-                    <span>Commercial vehicles</span>
-                    <span>Buses</span>
-                    <span>Trucks & trailers</span>
+        <div class="container">
+            <div class="detail-layout reverse">
+                <div class="detail-copy">
+                    <div class="detail-index">03</div>
+                    <span class="section-tag">AUTOMOTIVE PROFILES</span>
+                    <h2>Precision components for vehicles and transport</h2>
+                    <p>
+                        Automotive and transport profiles can be supplied as formed sections or prepared
+                        components with cutting, punching, bending and end finishing. Dimensional control,
+                        material traceability and test scope are set to the project requirement.
+                    </p>
+                    <div class="application-tags">
+                        <span>Passenger vehicles</span>
+                        <span>Commercial vehicles</span>
+                        <span>Buses</span>
+                        <span>Trucks & trailers</span>
+                    </div>
                 </div>
+
+                <ul class="product-list dark-list">
+                    {automotiveProducts.map((item) => (
+                        <li><span aria-hidden="true">✓</span>{item}</li>
+                    ))}
+                </ul>
             </div>
 
-            <ul class="product-list dark-list">
-                {automotiveProducts.map((item) => (
-                    <li><span aria-hidden="true">✓</span>{item}</li>
+            <div class="inline-range dark-range">
+                {automotiveRange.map(([label, value]) => (
+                    <div><span>{label}</span><strong>{value}</strong></div>
                 ))}
-            </ul>
+            </div>
+            <p class="dark-disclaimer">Catalogue dimensions are representative examples, not a continuous standard range. Automotive profiles are confirmed against the part drawing.</p>
         </div>
     </section>
 
@@ -286,6 +366,12 @@ const quoteDetails = [
                         <h3>{system.title}</h3>
                         <p>{system.description}</p>
                     </article>
+                ))}
+            </div>
+
+            <div class="inline-range solar-range">
+                {solarRange.map(([label, value]) => (
+                    <div><span>{label}</span><strong>{value}</strong></div>
                 ))}
             </div>
 
@@ -586,7 +672,12 @@ const quoteDetails = [
         font-size: 19px;
     }
 
-    .shape-grid,
+    .shape-grid {
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        gap: 18px;
+    }
+
     .solar-grid {
         display: grid;
         grid-template-columns: repeat(4, 1fr);
@@ -595,7 +686,7 @@ const quoteDetails = [
 
     .shape-card,
     .solar-card {
-        padding: 28px;
+        padding: 26px;
         background: var(--white);
         border: 1px solid var(--border);
         border-radius: 14px;
@@ -629,6 +720,33 @@ const quoteDetails = [
         color: var(--text-light);
         font-size: 14px;
         line-height: 1.7;
+    }
+
+    .card-specs {
+        margin: 22px 0 0;
+        border-top: 1px solid var(--border);
+    }
+
+    .card-specs div {
+        padding: 11px 0;
+        border-bottom: 1px solid var(--border);
+    }
+
+    .card-specs dt {
+        color: var(--text-light);
+        font-size: 10px;
+        font-weight: 800;
+        letter-spacing: 0.5px;
+        line-height: 1.3;
+        text-transform: uppercase;
+    }
+
+    .card-specs dd {
+        margin: 3px 0 0;
+        color: var(--secondary);
+        font-size: 14px;
+        font-weight: 800;
+        line-height: 1.35;
     }
 
     .detail-note,
@@ -694,6 +812,66 @@ const quoteDetails = [
         font-style: normal;
     }
 
+    .size-block {
+        margin-top: 72px;
+        padding-top: 54px;
+        border-top: 1px solid #d9dee5;
+    }
+
+    .size-block-heading {
+        display: grid;
+        grid-template-columns: minmax(280px, 0.7fr) minmax(420px, 1fr);
+        column-gap: 56px;
+        align-items: end;
+        margin-bottom: 30px;
+    }
+
+    .size-block-heading .section-tag {
+        grid-column: 1;
+    }
+
+    .size-block-heading h3 {
+        grid-column: 1;
+        margin: 6px 0 0;
+        color: var(--secondary);
+        font-size: 28px;
+    }
+
+    .size-block-heading p {
+        grid-column: 2;
+        grid-row: 1 / span 2;
+        margin: 0;
+        color: var(--text-light);
+        font-size: 14px;
+    }
+
+    .size-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 16px;
+    }
+
+    .size-card {
+        padding: 24px;
+        background: var(--white);
+        border: 1px solid var(--border);
+        border-radius: 12px;
+    }
+
+    .size-card h4 {
+        margin: 0;
+        color: var(--secondary);
+        font-family: "Montserrat", sans-serif;
+        font-size: 18px;
+    }
+
+    .range-disclaimer,
+    .dark-disclaimer {
+        margin: 18px 0 0;
+        color: var(--text-light);
+        font-size: 13px;
+    }
+
     .product-list,
     .quote-list {
         display: grid;
@@ -753,6 +931,47 @@ const quoteDetails = [
         border-color: rgba(255, 255, 255, 0.12);
     }
 
+    .inline-range {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 1px;
+        overflow: hidden;
+        margin-top: 52px;
+        background: rgba(255, 255, 255, 0.16);
+        border: 1px solid rgba(255, 255, 255, 0.14);
+        border-radius: 12px;
+    }
+
+    .inline-range > div {
+        padding: 20px;
+        background: rgba(255, 255, 255, 0.07);
+    }
+
+    .inline-range span,
+    .inline-range strong {
+        display: block;
+    }
+
+    .inline-range span {
+        color: #b8c8d8;
+        font-size: 10px;
+        font-weight: 800;
+        letter-spacing: 0.55px;
+        text-transform: uppercase;
+    }
+
+    .inline-range strong {
+        margin-top: 7px;
+        color: var(--white);
+        font-family: "Montserrat", sans-serif;
+        font-size: 16px;
+        line-height: 1.4;
+    }
+
+    .dark-disclaimer {
+        color: #9fb0c2;
+    }
+
     .solar-section {
         background: linear-gradient(180deg, #ffffff, #f1f8fb);
     }
@@ -784,6 +1003,24 @@ const quoteDetails = [
 
     .solar-note {
         max-width: 900px;
+    }
+
+    .solar-range {
+        margin-top: 24px;
+        background: var(--border);
+        border-color: var(--border);
+    }
+
+    .solar-range > div {
+        background: var(--white);
+    }
+
+    .solar-range span {
+        color: var(--text-light);
+    }
+
+    .solar-range strong {
+        color: var(--secondary);
     }
 
     .capability-layout {
@@ -882,9 +1119,20 @@ const quoteDetails = [
         }
 
         .section-heading,
-        .detail-heading {
+        .detail-heading,
+        .size-block-heading {
             grid-template-columns: 1fr;
             gap: 22px;
+        }
+
+        .size-block-heading p {
+            grid-column: 1;
+            grid-row: auto;
+        }
+
+        .size-grid,
+        .inline-range {
+            grid-template-columns: repeat(2, 1fr);
         }
 
         .detail-heading {
@@ -933,6 +1181,8 @@ const quoteDetails = [
         .category-grid,
         .shape-grid,
         .solar-grid,
+        .size-grid,
+        .inline-range,
         .product-list,
         .quote-list {
             grid-template-columns: 1fr;
